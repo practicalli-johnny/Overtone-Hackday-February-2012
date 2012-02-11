@@ -1,0 +1,536 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x0080596a, pid=2594, tid=2326457200
+#
+# JRE version: 6.0_23-b23
+# Java VM: OpenJDK Server VM (20.0-b11 mixed mode linux-x86 )
+# Derivative: IcedTea6 1.11pre
+# Distribution: Ubuntu 11.10, package 6b23~pre11-0ubuntu1.11.10
+# Problematic frame:
+# C  [libscsynth_jna.so+0x3496a]  World_WaitForQuit+0x1a
+#
+# If you would like to submit a bug report, please include
+# instructions how to reproduce the bug and visit:
+#   https://bugs.launchpad.net/ubuntu/+source/openjdk-6/
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x8aef8000):  JavaThread "Thread-5" daemon [_thread_in_native, id=2618, stack(0x8aa5e000,0x8aaaf000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x00000000
+
+Registers:
+EAX=0x8aaadad4, EBX=0x00818bb8, ECX=0x00000000, EDX=0x8aaadad8
+ESP=0x8aaadab4, EBP=0x8aaadacc, ESI=0x00000000, EDI=0x08cedb88
+EIP=0x0080596a, EFLAGS=0x00210206, CR2=0x00000000
+
+Top of Stack: (sp=0x8aaadab4)
+0x8aaadab4:   00000000 003a0114 00000001 08cedb88
+0x8aaadac4:   003a0114 00000001 8aaadad8 0039d6bf
+0x8aaadad4:   00000000 8aaadb18 0039d4ae 0039d2f0
+0x8aaadae4:   8aaadb00 00000004 00000000 8aaadcb0
+0x8aaadaf4:   00805950 b489294a 0039d44b 08cedb88
+0x8aaadb04:   8aaadcb0 8aaadc68 8d2e95f0 00000000
+0x8aaadb14:   003a0114 8aaadc48 0039891d 08cedb88
+0x8aaadb24:   00805950 8aaadcb0 8aaadc68 00000047 
+
+Instructions: (pc=0x0080596a)
+0x0080594a:   bc 27 00 00 00 00 55 89 e5 83 ec 18 89 75 fc 8b
+0x0080595a:   75 08 89 5d f8 e8 23 c9 fd ff 81 c3 54 32 01 00
+0x0080596a:   8b 06 8b 80 64 58 01 00 89 04 24 e8 8e bb fd ff
+0x0080597a:   89 34 24 e8 76 bd fd ff 8b 5d f8 8b 75 fc 89 ec 
+
+Register to memory mapping:
+
+EAX=0x8aaadad4 is pointing into the stack for thread: 0x8aef8000
+EBX=0x00818bb8: <offset 0x47bb8> in /tmp/scsynth_jna838544/libscsynth_jna.so at 0x007d1000
+ECX=0x00000000 is an unknown value
+EDX=0x8aaadad8 is pointing into the stack for thread: 0x8aef8000
+ESP=0x8aaadab4 is pointing into the stack for thread: 0x8aef8000
+EBP=0x8aaadacc is pointing into the stack for thread: 0x8aef8000
+ESI=0x00000000 is an unknown value
+EDI=0x08cedb88 is an unknown value
+
+
+Stack: [0x8aa5e000,0x8aaaf000],  sp=0x8aaadab4,  free space=318k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libscsynth_jna.so+0x3496a]  World_WaitForQuit+0x1a
+C  [jna3582532956667764795.tmp+0xe6bf]  ffi_call_SYSV+0x17
+C  [jna3582532956667764795.tmp+0xe4ae]  ffi_call+0x72
+C  [jna3582532956667764795.tmp+0x991d]  method_handler+0x169
+C  [jna3582532956667764795.tmp+0xe533]  ffi_closure_SYSV_inner+0x7b
+C  [jna3582532956667764795.tmp+0xe77e]  ffi_closure_SYSV+0x1e
+j  supercollider.internal.ScSynthLibrary.World_WaitForQuit(Lcom/sun/jna/Pointer;)V+0
+j  supercollider.ScSynth.run()V+67
+j  overtone.sc.machinery.server.connection$internal_booter.invoke()Ljava/lang/Object;+111
+j  clojure.lang.AFn.run()V+1
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x39a966]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x2c6
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  supercollider.internal.ScSynthLibrary.World_WaitForQuit(Lcom/sun/jna/Pointer;)V+0
+j  supercollider.ScSynth.run()V+67
+j  overtone.sc.machinery.server.connection$internal_booter.invoke()Ljava/lang/Object;+111
+j  clojure.lang.AFn.run()V+1
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x091cc000 JavaThread "Thread-6" [_thread_blocked, id=2626, stack(0x8797a000,0x879fb000)]
+=>0x8aef8000 JavaThread "Thread-5" daemon [_thread_in_native, id=2618, stack(0x8aa5e000,0x8aaaf000)]
+  0x8b8e6c00 JavaThread "pool-4-thread-2" [_thread_blocked, id=2617, stack(0x8b70d000,0x8b75e000)]
+  0x8b63b800 JavaThread "pool-4-thread-1" [_thread_blocked, id=2616, stack(0x8b75e000,0x8b7af000)]
+  0x8b63e800 JavaThread "clojure-agent-send-off-pool-0" [_thread_in_vm, id=2615, stack(0x8b7af000,0x8b800000)]
+  0x8adfbc00 JavaThread "Thread-1" [_thread_blocked, id=2611, stack(0x8aaaf000,0x8ab00000)]
+  0x091a4c00 JavaThread "Thread-0" [_thread_in_native, id=2609, stack(0x8bb27000,0x8bb78000)]
+  0x08c47c00 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=2606, stack(0x8be17000,0x8be68000)]
+  0x08c45c00 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=2605, stack(0x8bc7f000,0x8bd00000)]
+  0x08c43800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=2604, stack(0x8be68000,0x8bee9000)]
+  0x08c42400 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=2603, stack(0x8bee9000,0x8bf3a000)]
+  0x08c2f400 JavaThread "Finalizer" daemon [_thread_blocked, id=2602, stack(0x8c17b000,0x8c1cc000)]
+  0x08c2dc00 JavaThread "Reference Handler" daemon [_thread_blocked, id=2601, stack(0x8c1cc000,0x8c21d000)]
+  0x08ba5400 JavaThread "main" [_thread_blocked, id=2597, stack(0xb7857000,0xb78a8000)]
+
+Other Threads:
+  0x08c29c00 VMThread [stack: 0x8c21d000,0x8c29e000] [id=2600]
+  0x08c4b000 WatcherThread [stack: 0x8bbfe000,0x8bc7f000] [id=2607]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 171264K, used 18024K [0xa9cf0000, 0xb4790000, 0xb4790000)
+  eden space 168640K, 9% used [0xa9cf0000,0xaabff778,0xb41a0000)
+  from space 2624K, 99% used [0xb41a0000,0xb442a8c0,0xb4430000)
+  to   space 3264K, 0% used [0xb4460000,0xb4460000,0xb4790000)
+ PSOldGen        total 21440K, used 12913K [0x94790000, 0x95c80000, 0xa9cf0000)
+  object space 21440K, 60% used [0x94790000,0x9542c718,0x95c80000)
+ PSPermGen       total 20224K, used 20133K [0x8c790000, 0x8db50000, 0x94790000)
+  object space 20224K, 99% used [0x8c790000,0x8db394c8,0x8db50000)
+
+Code Cache  [0xb4857000, 0xb4a97000, 0xb7857000)
+ total_blobs=763 nmethods=605 adapters=111 free_code_cache=48177728 largest_free_block=58624
+
+Dynamic libraries:
+00110000-00113000 r-xp 00000000 08:01 132321     /lib/i386-linux-gnu/libdl-2.13.so
+00113000-00114000 r--p 00002000 08:01 132321     /lib/i386-linux-gnu/libdl-2.13.so
+00114000-00115000 rw-p 00003000 08:01 132321     /lib/i386-linux-gnu/libdl-2.13.so
+00115000-00131000 r-xp 00000000 08:01 132331     /lib/i386-linux-gnu/libgcc_s.so.1
+00131000-00132000 r--p 0001b000 08:01 132331     /lib/i386-linux-gnu/libgcc_s.so.1
+00132000-00133000 rw-p 0001c000 08:01 132331     /lib/i386-linux-gnu/libgcc_s.so.1
+00133000-0013a000 r-xp 00000000 08:01 132374     /lib/i386-linux-gnu/librt-2.13.so
+0013a000-0013b000 r--p 00006000 08:01 132374     /lib/i386-linux-gnu/librt-2.13.so
+0013b000-0013c000 rw-p 00007000 08:01 132374     /lib/i386-linux-gnu/librt-2.13.so
+0013c000-00147000 r-xp 00000000 08:01 307285     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libverify.so
+00147000-00148000 ---p 0000b000 08:01 307285     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libverify.so
+00148000-00149000 r--p 0000b000 08:01 307285     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libverify.so
+00149000-0014a000 rw-p 0000c000 08:01 307285     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libverify.so
+0014a000-0015f000 r-xp 00000000 08:01 132345     /lib/i386-linux-gnu/libnsl-2.13.so
+0015f000-00160000 r--p 00015000 08:01 132345     /lib/i386-linux-gnu/libnsl-2.13.so
+00160000-00161000 rw-p 00016000 08:01 132345     /lib/i386-linux-gnu/libnsl-2.13.so
+00161000-00163000 rw-p 00000000 00:00 0 
+00163000-00165000 r-xp 00000000 08:01 263810     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00165000-00166000 r--p 00001000 08:01 263810     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00166000-00167000 rw-p 00002000 08:01 263810     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00167000-00168000 r-xs 00000000 08:01 258703     /tmp/ffinM9Jei (deleted)
+00168000-00169000 r-xp 00000000 08:01 258693     /tmp/scsynth_jna838544/ugens/TestUGens.so
+00169000-0016a000 rw-p 00000000 08:01 258693     /tmp/scsynth_jna838544/ugens/TestUGens.so
+0016a000-0016b000 r-xp 00000000 08:01 258684     /tmp/scsynth_jna838544/ugens/PhysicalModelingUGens.so
+0016b000-0016c000 rw-p 00001000 08:01 258684     /tmp/scsynth_jna838544/ugens/PhysicalModelingUGens.so
+0016c000-002e2000 r-xp 00000000 08:01 132310     /lib/i386-linux-gnu/libc-2.13.so
+002e2000-002e4000 r--p 00176000 08:01 132310     /lib/i386-linux-gnu/libc-2.13.so
+002e4000-002e5000 rw-p 00178000 08:01 132310     /lib/i386-linux-gnu/libc-2.13.so
+002e5000-002e8000 rw-p 00000000 00:00 0 
+002e8000-002f2000 r-xp 00000000 08:01 132355     /lib/i386-linux-gnu/libnss_nis-2.13.so
+002f2000-002f3000 r--p 00009000 08:01 132355     /lib/i386-linux-gnu/libnss_nis-2.13.so
+002f3000-002f4000 rw-p 0000a000 08:01 132355     /lib/i386-linux-gnu/libnss_nis-2.13.so
+002f4000-00340000 r-xp 00000000 08:01 272109     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/xawt/libmawt.so
+00340000-00341000 r--p 0004b000 08:01 272109     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/xawt/libmawt.so
+00341000-00343000 rw-p 0004c000 08:01 272109     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/xawt/libmawt.so
+00343000-00344000 rw-p 00000000 00:00 0 
+00344000-0034d000 r-xp 00000000 08:01 263832     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+0034d000-0034e000 r--p 00008000 08:01 263832     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+0034e000-0034f000 rw-p 00009000 08:01 263832     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+0034f000-0035d000 r-xp 00000000 08:01 263826     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+0035d000-0035e000 r--p 0000d000 08:01 263826     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+0035e000-0035f000 rw-p 0000e000 08:01 263826     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+0035f000-0037c000 r-xp 00000000 08:01 264053     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+0037c000-0037d000 r--p 0001c000 08:01 264053     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+0037d000-0037e000 rw-p 0001d000 08:01 264053     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+0037e000-00383000 r-xp 00000000 08:01 263818     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+00383000-00384000 r--p 00004000 08:01 263818     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+00384000-00385000 rw-p 00005000 08:01 263818     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+00385000-0038d000 r-xp 00000000 08:01 307266     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnio.so
+0038d000-0038e000 r--p 00007000 08:01 307266     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnio.so
+0038e000-0038f000 rw-p 00008000 08:01 307266     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnio.so
+0038f000-003a0000 r-xp 00000000 08:01 258673     /tmp/jna3582532956667764795.tmp
+003a0000-003a1000 rw-p 00011000 08:01 258673     /tmp/jna3582532956667764795.tmp
+003a1000-003a7000 r-xp 00000000 08:01 263974     /usr/lib/i386-linux-gnu/libogg.so.0.7.1
+003a7000-003a8000 r--p 00005000 08:01 263974     /usr/lib/i386-linux-gnu/libogg.so.0.7.1
+003a8000-003a9000 rw-p 00006000 08:01 263974     /usr/lib/i386-linux-gnu/libogg.so.0.7.1
+003a9000-003ab000 r-xp 00000000 08:01 258679     /tmp/scsynth_jna838544/ugens/MouseUGens.so
+003ab000-003ac000 rw-p 00002000 08:01 258679     /tmp/scsynth_jna838544/ugens/MouseUGens.so
+003ac000-003ca000 r-xp 00000000 08:01 132297     /lib/i386-linux-gnu/ld-2.13.so
+003ca000-003cb000 r--p 0001d000 08:01 132297     /lib/i386-linux-gnu/ld-2.13.so
+003cb000-003cc000 rw-p 0001e000 08:01 132297     /lib/i386-linux-gnu/ld-2.13.so
+003cc000-004aa000 r-xp 00000000 08:01 264023     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16
+004aa000-004ab000 ---p 000de000 08:01 264023     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16
+004ab000-004af000 r--p 000de000 08:01 264023     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16
+004af000-004b0000 rw-p 000e2000 08:01 264023     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16
+004b0000-004b7000 rw-p 00000000 00:00 0 
+004b7000-004e0000 r-xp 00000000 08:01 264039     /usr/lib/i386-linux-gnu/libvorbis.so.0.4.5
+004e0000-004e1000 r--p 00028000 08:01 264039     /usr/lib/i386-linux-gnu/libvorbis.so.0.4.5
+004e1000-004e2000 rw-p 00029000 08:01 264039     /usr/lib/i386-linux-gnu/libvorbis.so.0.4.5
+004e2000-004e8000 r-xp 00000000 08:01 258695     /tmp/scsynth_jna838544/ugens/MulAddUGens.so
+004e8000-004e9000 rw-p 00005000 08:01 258695     /tmp/scsynth_jna838544/ugens/MulAddUGens.so
+004ea000-00501000 r-xp 00000000 08:01 132370     /lib/i386-linux-gnu/libpthread-2.13.so
+00501000-00502000 r--p 00016000 08:01 132370     /lib/i386-linux-gnu/libpthread-2.13.so
+00502000-00503000 rw-p 00017000 08:01 132370     /lib/i386-linux-gnu/libpthread-2.13.so
+00503000-00505000 rw-p 00000000 00:00 0 
+00505000-00515000 r-xp 00000000 08:01 258699     /tmp/scsynth_jna838544/ugens/UnaryOpUGens.so
+00515000-00516000 rw-p 0000f000 08:01 258699     /tmp/scsynth_jna838544/ugens/UnaryOpUGens.so
+00516000-0051e000 r-xp 00000000 08:01 258681     /tmp/scsynth_jna838544/ugens/PanUGens.so
+0051e000-0051f000 rw-p 00007000 08:01 258681     /tmp/scsynth_jna838544/ugens/PanUGens.so
+0051f000-00541000 r-xp 00000000 08:01 258685     /tmp/scsynth_jna838544/ugens/DelayUGens.so
+00541000-00542000 rw-p 00022000 08:01 258685     /tmp/scsynth_jna838544/ugens/DelayUGens.so
+00542000-00544000 r-xp 00000000 08:01 258694     /tmp/scsynth_jna838544/ugens/DynNoiseUGens.so
+00544000-00545000 rw-p 00002000 08:01 258694     /tmp/scsynth_jna838544/ugens/DynNoiseUGens.so
+00545000-00676000 r-xp 00000000 08:01 263808     /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+00676000-00677000 ---p 00131000 08:01 263808     /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+00677000-00678000 r--p 00131000 08:01 263808     /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+00678000-0067a000 rw-p 00132000 08:01 263808     /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+0067a000-0067b000 rw-p 00000000 00:00 0 
+0067b000-006ba000 r-xp 00000000 08:01 263940     /usr/lib/i386-linux-gnu/libjack.so.0.1.0
+006ba000-006bb000 r--p 0003f000 08:01 263940     /usr/lib/i386-linux-gnu/libjack.so.0.1.0
+006bb000-006bc000 rw-p 00040000 08:01 263940     /usr/lib/i386-linux-gnu/libjack.so.0.1.0
+006bc000-006bf000 r-xp 00000000 08:01 258680     /tmp/scsynth_jna838544/ugens/GendynUGens.so
+006bf000-006c0000 rw-p 00002000 08:01 258680     /tmp/scsynth_jna838544/ugens/GendynUGens.so
+006c0000-006c1000 r-xp 00000000 08:01 258678     /tmp/scsynth_jna838544/ugens/KeyboardUGens.so
+006c1000-006c2000 rw-p 00000000 08:01 258678     /tmp/scsynth_jna838544/ugens/KeyboardUGens.so
+006c4000-00757000 r-xp 00000000 08:01 307265     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libawt.so
+00757000-00758000 r--p 00092000 08:01 307265     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libawt.so
+00758000-0075f000 rw-p 00093000 08:01 307265     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libawt.so
+0075f000-00783000 rw-p 00000000 00:00 0 
+00783000-0078d000 r-xp 00000000 08:01 258696     /tmp/scsynth_jna838544/ugens/TriggerUGens.so
+0078d000-0078e000 rw-p 00009000 08:01 258696     /tmp/scsynth_jna838544/ugens/TriggerUGens.so
+0078e000-00796000 r-xp 00000000 08:01 258690     /tmp/scsynth_jna838544/ugens/ReverbUGens.so
+00796000-00797000 rw-p 00007000 08:01 258690     /tmp/scsynth_jna838544/ugens/ReverbUGens.so
+00797000-0079e000 r-xp 00000000 08:01 258686     /tmp/scsynth_jna838544/ugens/IOUGens.so
+0079e000-0079f000 rw-p 00006000 08:01 258686     /tmp/scsynth_jna838544/ugens/IOUGens.so
+0079f000-007a9000 r-xp 00000000 08:01 258692     /tmp/scsynth_jna838544/ugens/ML_UGens.so
+007a9000-007b1000 rw-p 00009000 08:01 258692     /tmp/scsynth_jna838544/ugens/ML_UGens.so
+007b1000-007b5000 rw-p 00000000 00:00 0 
+007b5000-007c6000 r-xp 00000000 08:01 258701     /tmp/scsynth_jna838544/ugens/OscUGens.so
+007c6000-007c7000 rw-p 00010000 08:01 258701     /tmp/scsynth_jna838544/ugens/OscUGens.so
+007c7000-007cf000 r-xp 00000000 08:01 132347     /lib/i386-linux-gnu/libnss_compat-2.13.so
+007cf000-007d0000 r--p 00007000 08:01 132347     /lib/i386-linux-gnu/libnss_compat-2.13.so
+007d0000-007d1000 rw-p 00008000 08:01 132347     /lib/i386-linux-gnu/libnss_compat-2.13.so
+007d1000-00818000 r-xp 00000000 08:01 258676     /tmp/scsynth_jna838544/libscsynth_jna.so
+00818000-0081a000 rw-p 00047000 08:01 258676     /tmp/scsynth_jna838544/libscsynth_jna.so
+0081a000-0083e000 rw-p 00000000 00:00 0 
+0083e000-008a9000 r-xp 00000000 08:01 264014     /usr/lib/i386-linux-gnu/libsndfile.so.1.0.24
+008a9000-008aa000 r--p 0006b000 08:01 264014     /usr/lib/i386-linux-gnu/libsndfile.so.1.0.24
+008aa000-008ab000 rw-p 0006c000 08:01 264014     /usr/lib/i386-linux-gnu/libsndfile.so.1.0.24
+008ab000-008af000 rw-p 00000000 00:00 0 
+008af000-008b2000 r-xp 00000000 08:01 258702     /tmp/scsynth_jna838544/ugens/UnpackFFTUGens.so
+008b2000-008b3000 rw-p 00002000 08:01 258702     /tmp/scsynth_jna838544/ugens/UnpackFFTUGens.so
+008b3000-008b7000 rw-p 00000000 00:00 0 
+008b7000-008ca000 r-xp 00000000 08:01 258683     /tmp/scsynth_jna838544/ugens/GrainUGens.so
+008ca000-008cb000 rw-p 00012000 08:01 258683     /tmp/scsynth_jna838544/ugens/GrainUGens.so
+008cb000-008d7000 r-xp 00000000 08:01 258697     /tmp/scsynth_jna838544/ugens/FFT_UGens.so
+008d7000-008d8000 rw-p 0000b000 08:01 258697     /tmp/scsynth_jna838544/ugens/FFT_UGens.so
+008d8000-008dc000 rw-p 00000000 00:00 0 
+008f6000-00901000 r-xp 00000000 08:01 132351     /lib/i386-linux-gnu/libnss_files-2.13.so
+00901000-00902000 r--p 0000a000 08:01 132351     /lib/i386-linux-gnu/libnss_files-2.13.so
+00902000-00903000 rw-p 0000b000 08:01 132351     /lib/i386-linux-gnu/libnss_files-2.13.so
+0090d000-00911000 r-xp 00000000 08:01 307270     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/jli/libjli.so
+00911000-00912000 r--p 00003000 08:01 307270     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/jli/libjli.so
+00912000-00913000 rw-p 00004000 08:01 307270     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/jli/libjli.so
+0091c000-00926000 r-xp 00000000 08:01 258688     /tmp/scsynth_jna838544/ugens/DemandUGens.so
+00926000-00927000 rw-p 0000a000 08:01 258688     /tmp/scsynth_jna838544/ugens/DemandUGens.so
+00927000-0095a000 r-xp 00000000 08:01 258677     /tmp/scsynth_jna838544/ugens/BinaryOpUGens.so
+0095a000-0095b000 rw-p 00032000 08:01 258677     /tmp/scsynth_jna838544/ugens/BinaryOpUGens.so
+00a22000-00a4a000 r-xp 00000000 08:01 132340     /lib/i386-linux-gnu/libm-2.13.so
+00a4a000-00a4b000 r--p 00028000 08:01 132340     /lib/i386-linux-gnu/libm-2.13.so
+00a4b000-00a4c000 rw-p 00029000 08:01 132340     /lib/i386-linux-gnu/libm-2.13.so
+00a55000-00a7b000 r-xp 00000000 08:01 307262     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libjava.so
+00a7b000-00a7c000 r--p 00025000 08:01 307262     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libjava.so
+00a7c000-00a7e000 rw-p 00026000 08:01 307262     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libjava.so
+00a82000-00a86000 r-xp 00000000 08:01 258691     /tmp/scsynth_jna838544/ugens/DiskIO_UGens.so
+00a86000-00a87000 rw-p 00004000 08:01 258691     /tmp/scsynth_jna838544/ugens/DiskIO_UGens.so
+00a87000-00a88000 rw-p 00000000 00:00 0 
+00adf000-00ae5000 r-xp 00000000 08:01 258698     /tmp/scsynth_jna838544/ugens/NoiseUGens.so
+00ae5000-00ae6000 rw-p 00005000 08:01 258698     /tmp/scsynth_jna838544/ugens/NoiseUGens.so
+00b0f000-00b20000 r-xp 00000000 08:01 263820     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+00b20000-00b21000 r--p 00010000 08:01 263820     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+00b21000-00b22000 rw-p 00011000 08:01 263820     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+00ba7000-00bac000 r-xp 00000000 08:01 261699     /usr/lib/libXtst.so.6.1.0
+00bac000-00bad000 r--p 00004000 08:01 261699     /usr/lib/libXtst.so.6.1.0
+00bad000-00bae000 rw-p 00005000 08:01 261699     /usr/lib/libXtst.so.6.1.0
+00bdf000-00be7000 r-xp 00000000 08:01 258687     /tmp/scsynth_jna838544/ugens/PV_ThirdParty.so
+00be7000-00be8000 rw-p 00007000 08:01 258687     /tmp/scsynth_jna838544/ugens/PV_ThirdParty.so
+00be8000-00bec000 rw-p 00000000 00:00 0 
+00c09000-00c22000 r-xp 00000000 08:01 258700     /tmp/scsynth_jna838544/ugens/FilterUGens.so
+00c22000-00c23000 rw-p 00018000 08:01 258700     /tmp/scsynth_jna838544/ugens/FilterUGens.so
+00c46000-00c4d000 r-xp 00000000 08:01 258682     /tmp/scsynth_jna838544/ugens/ChaosUGens.so
+00c4d000-00c4e000 rw-p 00006000 08:01 258682     /tmp/scsynth_jna838544/ugens/ChaosUGens.so
+00c79000-00c8b000 r-xp 00000000 08:01 258689     /tmp/scsynth_jna838544/ugens/LFUGens.so
+00c8b000-00c8c000 rw-p 00011000 08:01 258689     /tmp/scsynth_jna838544/ugens/LFUGens.so
+00cee000-00d01000 r-xp 00000000 08:01 132393     /lib/i386-linux-gnu/libz.so.1.2.3.4
+00d01000-00d02000 r--p 00012000 08:01 132393     /lib/i386-linux-gnu/libz.so.1.2.3.4
+00d02000-00d03000 rw-p 00013000 08:01 132393     /lib/i386-linux-gnu/libz.so.1.2.3.4
+00d44000-00d4b000 r-xp 00000000 08:01 307267     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libzip.so
+00d4b000-00d4c000 r--p 00006000 08:01 307267     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libzip.so
+00d4c000-00d4d000 rw-p 00007000 08:01 307267     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libzip.so
+00d5c000-00da8000 r-xp 00000000 08:01 263797     /usr/lib/i386-linux-gnu/libFLAC.so.8.2.0
+00da8000-00da9000 r--p 0004b000 08:01 263797     /usr/lib/i386-linux-gnu/libFLAC.so.8.2.0
+00da9000-00daa000 rw-p 0004c000 08:01 263797     /usr/lib/i386-linux-gnu/libFLAC.so.8.2.0
+00e7e000-00e93000 r-xp 00000000 08:01 307293     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnet.so
+00e93000-00e94000 r--p 00014000 08:01 307293     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnet.so
+00e94000-00e95000 rw-p 00015000 08:01 307293     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnet.so
+00ede000-00edf000 r-xp 00000000 00:00 0          [vdso]
+00edf000-016fd000 r-xp 00000000 08:01 307277     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/server/libjvm.so
+016fd000-01742000 r--p 0081e000 08:01 307277     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/server/libjvm.so
+01742000-01751000 rw-p 00863000 08:01 307277     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/server/libjvm.so
+01751000-01b6b000 rw-p 00000000 00:00 0 
+01b6b000-01cd1000 r-xp 00000000 08:01 264041     /usr/lib/i386-linux-gnu/libvorbisenc.so.2.0.8
+01cd1000-01ce2000 r--p 00165000 08:01 264041     /usr/lib/i386-linux-gnu/libvorbisenc.so.2.0.8
+01ce2000-01ce3000 rw-p 00176000 08:01 264041     /usr/lib/i386-linux-gnu/libvorbisenc.so.2.0.8
+0782e000-07973000 r-xp 00000000 08:01 272645     /usr/lib/libfftw3f.so.3.2.4
+07973000-0797b000 r--p 00145000 08:01 272645     /usr/lib/libfftw3f.so.3.2.4
+0797b000-0797c000 rw-p 0014d000 08:01 272645     /usr/lib/libfftw3f.so.3.2.4
+08048000-08051000 r-xp 00000000 08:01 273091     /usr/lib/jvm/java-6-openjdk/jre/bin/java
+08051000-08052000 r--p 00008000 08:01 273091     /usr/lib/jvm/java-6-openjdk/jre/bin/java
+08052000-08053000 rw-p 00009000 08:01 273091     /usr/lib/jvm/java-6-openjdk/jre/bin/java
+08b9a000-0b583000 rw-p 00000000 00:00 0          [heap]
+8797a000-8797d000 ---p 00000000 00:00 0 
+8797d000-879fb000 rw-p 00000000 00:00 0 
+879fb000-879fc000 ---p 00000000 00:00 0 
+879fc000-889fd000 rw-p 00000000 00:00 0 
+889fd000-889fe000 ---p 00000000 00:00 0 
+889fe000-891fe000 rw-p 00000000 00:00 0 
+891fe000-891ff000 ---p 00000000 00:00 0 
+891ff000-899ff000 rw-p 00000000 00:00 0 
+899ff000-89a00000 ---p 00000000 00:00 0 
+89a00000-8a200000 rw-p 00000000 00:00 0 
+8a200000-8a2ff000 rw-p 00000000 00:00 0 
+8a2ff000-8a300000 ---p 00000000 00:00 0 
+8a400000-8a5f3000 rw-p 00000000 00:00 0 
+8a5f3000-8a600000 ---p 00000000 00:00 0 
+8a600000-8a6fa000 rw-p 00000000 00:00 0 
+8a6fa000-8a700000 ---p 00000000 00:00 0 
+8a700000-8a8ff000 rw-p 00000000 00:00 0 
+8a8ff000-8a900000 ---p 00000000 00:00 0 
+8a900000-8a9e0000 rw-p 00000000 00:00 0 
+8a9e0000-8aa00000 ---p 00000000 00:00 0 
+8aa5e000-8aa61000 ---p 00000000 00:00 0 
+8aa61000-8aaaf000 rw-p 00000000 00:00 0 
+8aaaf000-8aab2000 ---p 00000000 00:00 0 
+8aab2000-8ab00000 rw-p 00000000 00:00 0 
+8ab00000-8abe3000 rw-p 00000000 00:00 0 
+8abe3000-8ac00000 ---p 00000000 00:00 0 
+8ac00000-8acf1000 rw-p 00000000 00:00 0 
+8acf1000-8ad00000 ---p 00000000 00:00 0 
+8ad00000-8adfc000 rw-p 00000000 00:00 0 
+8adfc000-8ae00000 ---p 00000000 00:00 0 
+8ae00000-8aefc000 rw-p 00000000 00:00 0 
+8aefc000-8af00000 ---p 00000000 00:00 0 
+8af00000-8aff0000 rw-p 00000000 00:00 0 
+8aff0000-8b000000 ---p 00000000 00:00 0 
+8b000000-8b0dd000 rw-p 00000000 00:00 0 
+8b0dd000-8b100000 ---p 00000000 00:00 0 
+8b100000-8b300000 rw-p 00000000 00:00 0 
+8b300000-8b500000 rw-p 00000000 00:00 0 
+8b500000-8b600000 rw-p 00000000 00:00 0 
+8b600000-8b6fc000 rw-p 00000000 00:00 0 
+8b6fc000-8b700000 ---p 00000000 00:00 0 
+8b70d000-8b710000 ---p 00000000 00:00 0 
+8b710000-8b75e000 rw-p 00000000 00:00 0 
+8b75e000-8b761000 ---p 00000000 00:00 0 
+8b761000-8b7af000 rw-p 00000000 00:00 0 
+8b7af000-8b7b2000 ---p 00000000 00:00 0 
+8b7b2000-8b800000 rw-p 00000000 00:00 0 
+8b800000-8b8e8000 rw-p 00000000 00:00 0 
+8b8e8000-8b900000 ---p 00000000 00:00 0 
+8b900000-8b9e2000 rw-p 00000000 00:00 0 
+8b9e2000-8ba00000 ---p 00000000 00:00 0 
+8ba00000-8baf9000 rw-p 00000000 00:00 0 
+8baf9000-8bb00000 ---p 00000000 00:00 0 
+8bb22000-8bb23000 rw-p 00000000 00:00 0 
+8bb23000-8bb24000 r--p 00000000 00:00 0 
+8bb24000-8bb27000 r--s 00077000 08:01 307232     /usr/lib/jvm/java-6-openjdk/jre/lib/ext/localedata.jar
+8bb27000-8bb2a000 ---p 00000000 00:00 0 
+8bb2a000-8bb78000 rw-p 00000000 00:00 0 
+8bb78000-8bba7000 r--s 00317000 08:11 493069     /home/jr0cket/.lein/plugins/swank-clojure-1.3.3.jar
+8bba7000-8bbb3000 r--s 000a2000 08:11 495478     /home/jr0cket/.lein/plugins/lein-iclojure-1.0.0-SNAPSHOT.jar
+8bbb3000-8bbba000 r--s 00b3c000 08:11 66138      /home/jr0cket/projects/clojure/overtone/tutorial/lib/scsynth-jna-0.1.2-20100502.112537-1.jar
+8bbba000-8bbbc000 r--s 00000000 08:11 66132      /home/jr0cket/projects/clojure/overtone/tutorial/lib/byte-spec-0.3.1.jar
+8bbbc000-8bbbf000 r--s 000e4000 08:11 66143      /home/jr0cket/projects/clojure/overtone/tutorial/lib/jna-3.2.4.jar
+8bbbf000-8bbc4000 r--s 00047000 08:11 66135      /home/jr0cket/projects/clojure/overtone/tutorial/lib/jmdns-3.2.1.jar
+8bbc4000-8bbfe000 r--s 00302000 08:11 66137      /home/jr0cket/projects/clojure/overtone/tutorial/lib/clojure-1.3.0.jar
+8bbfe000-8bbff000 ---p 00000000 00:00 0 
+8bbff000-8bc7f000 rw-p 00000000 00:00 0 
+8bc7f000-8bc82000 ---p 00000000 00:00 0 
+8bc82000-8bd00000 rw-p 00000000 00:00 0 
+8bd00000-8bdeb000 rw-p 00000000 00:00 0 
+8bdeb000-8be00000 ---p 00000000 00:00 0 
+8be00000-8be01000 rw-s 00000000 08:01 258703     /tmp/ffinM9Jei (deleted)
+8be01000-8be02000 r--s 00001000 08:11 66134      /home/jr0cket/projects/clojure/overtone/tutorial/lib/at-at-0.2.1.jar
+8be02000-8be05000 r--s 0007d000 08:01 307211     /usr/lib/jvm/java-6-openjdk/jre/lib/jsse.jar
+8be05000-8be09000 r--s 00032000 08:11 66127      /home/jr0cket/projects/clojure/overtone/tutorial/lib/overtone-0.6.0.jar
+8be09000-8be0a000 r--s 00000000 08:11 66124      /home/jr0cket/projects/clojure/overtone/tutorial/lib/core.incubator-0.1.0.jar
+8be0a000-8be0b000 r--s 00001000 08:11 66140      /home/jr0cket/projects/clojure/overtone/tutorial/lib/data.json-0.1.2.jar
+8be0b000-8be0f000 r--s 0002e000 08:11 66133      /home/jr0cket/projects/clojure/overtone/tutorial/lib/miglayout-3.7.3.1.jar
+8be0f000-8be17000 r--s 00066000 08:01 393503     /usr/share/java/gnome-java-bridge.jar
+8be17000-8be1a000 ---p 00000000 00:00 0 
+8be1a000-8be68000 rw-p 00000000 00:00 0 
+8be68000-8be6b000 ---p 00000000 00:00 0 
+8be6b000-8bee9000 rw-p 00000000 00:00 0 
+8bee9000-8beec000 ---p 00000000 00:00 0 
+8beec000-8bf3a000 rw-p 00000000 00:00 0 
+8bf3a000-8bf3b000 r--p 00434000 08:01 264761     /usr/lib/locale/locale-archive
+8bf3b000-8bf7b000 r--p 002bd000 08:01 264761     /usr/lib/locale/locale-archive
+8bf7b000-8c17b000 r--p 00000000 08:01 264761     /usr/lib/locale/locale-archive
+8c17b000-8c17e000 ---p 00000000 00:00 0 
+8c17e000-8c1cc000 rw-p 00000000 00:00 0 
+8c1cc000-8c1cf000 ---p 00000000 00:00 0 
+8c1cf000-8c21d000 rw-p 00000000 00:00 0 
+8c21d000-8c21e000 ---p 00000000 00:00 0 
+8c21e000-8c2d1000 rw-p 00000000 00:00 0 
+8c2d1000-8c462000 r--s 037b8000 08:01 307296     /usr/lib/jvm/java-6-openjdk/jre/lib/rt.jar
+8c462000-8c463000 ---p 00000000 00:00 0 
+8c463000-8c4e3000 rw-p 00000000 00:00 0 
+8c4e3000-8c4e4000 ---p 00000000 00:00 0 
+8c4e4000-8c56e000 rw-p 00000000 00:00 0 
+8c56e000-8c5a4000 rw-p 00000000 00:00 0 
+8c5a4000-8c5af000 rw-p 00000000 00:00 0 
+8c5af000-8c64f000 rw-p 00000000 00:00 0 
+8c64f000-8c659000 rw-p 00000000 00:00 0 
+8c659000-8c68f000 rw-p 00000000 00:00 0 
+8c68f000-8c69a000 rw-p 00000000 00:00 0 
+8c69a000-8c739000 rw-p 00000000 00:00 0 
+8c739000-8c78f000 rw-p 00000000 00:00 0 
+8c78f000-8db50000 rw-p 00000000 00:00 0 
+8db50000-94790000 rw-p 00000000 00:00 0 
+94790000-95c80000 rw-p 00000000 00:00 0 
+95c80000-a9cf0000 rw-p 00000000 00:00 0 
+a9cf0000-b4790000 rw-p 00000000 00:00 0 
+b4790000-b4792000 r--s 00003000 08:11 66142      /home/jr0cket/projects/clojure/overtone/tutorial/lib/osc-clj-0.7.1.jar
+b4792000-b4797000 r--s 0003d000 08:11 66141      /home/jr0cket/projects/clojure/overtone/tutorial/lib/commons-net-3.0.1.jar
+b4797000-b47a0000 rw-p 00000000 00:00 0 
+b47a0000-b4857000 rw-p 00000000 00:00 0 
+b4857000-b4a97000 rwxp 00000000 00:00 0 
+b4a97000-b7857000 rw-p 00000000 00:00 0 
+b7857000-b785a000 ---p 00000000 00:00 0 
+b785a000-b78ab000 rw-p 00000000 00:00 0 
+b78ab000-b78ac000 r--s 00003000 08:11 66130      /home/jr0cket/projects/clojure/overtone/tutorial/lib/java-osc-cvs-20100502.112537-4.jar
+b78ac000-b78ad000 r--s 00001000 08:11 66136      /home/jr0cket/projects/clojure/overtone/tutorial/lib/midi-clj-0.2.1.jar
+b78ad000-b78ae000 r--s 00000000 08:11 66131      /home/jr0cket/projects/clojure/overtone/tutorial/lib/clj-glob-1.0.0.jar
+b78ae000-b78af000 r--s 00005000 08:11 66139      /home/jr0cket/projects/clojure/overtone/tutorial/lib/core.match-0.2.0-alpha6.jar
+b78af000-b78b1000 r--s 0000f000 08:01 307236     /usr/lib/jvm/java-6-openjdk/jre/lib/ext/pulse-java.jar
+b78b1000-b78b9000 rw-s 00000000 08:01 258672     /tmp/hsperfdata_jr0cket/2594
+b78b9000-b78ba000 rw-p 00000000 00:00 0 
+b78ba000-b78bb000 r--p 00000000 00:00 0 
+b78bb000-b78bd000 rw-p 00000000 00:00 0 
+bff21000-bff44000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Dclojure.compile.path=/home/jr0cket/projects/clojure/overtone/tutorial/classes -Dtutorial.version=1.0.0-SNAPSHOT -Dclojure.debug=false 
+java_command: clojure.main -e (do nil nil (do (clojure.core/ns leiningen.util.injected) (defn- compose-hooks [f1 f2] (fn [& args] (apply f2 f1 args))) (defn- join-hooks [original hooks] (reduce compose-hooks original hooks)) (defn- run-hooks [hook original args] (apply (join-hooks original (clojure.core/deref hook)) args)) (defn- prepare-for-hooks [v] (when-not (:robert.hooke/hook (meta (clojure.core/deref v))) (let [hook (atom ())] (alter-var-root v (fn [original] (with-meta (fn [& args] (run-hooks hook original args)) (assoc (meta original) :robert.hooke/hook hook :robert.hooke/original original))))))) (defn- add-unless-present [coll f] (if-not (some #{f} coll) (conj coll f) coll)) (defn add-hook "Add a hook function f to target-var. Hook functions are passed the\n  target function and all their arguments and must apply the target to\n  the args if they wish to continue execution." [target-var f] (prepare-for-hooks target-var) (swap! (:robert.hooke/hook (meta (clojure.core/deref target-var))) add-unless-present f)) (clojure.core/ns user)) (set! *warn-on-reflection* nil) (try (do (try (clojure.core/require (quote clojure.java.shell)) (clojure.core/require (quote clojure.java.browse)) (catch java.lang.Exception ___3867__auto__)) (set! clojure.core/*warn-on-reflection* false) (clojure.core/let [server__3868__auto__ (java.net.ServerSocket. 31363 0 (java.net.InetAddress/getByName "localhost")) acc__3869__auto__ (clojure.core/fn [s__3870__auto__] (clojure.core/let [ins__3871__auto__ (.getInputStream s__3870__auto__) outs__3872__auto__ (.getOutputStream s__3870__auto__) out-writer__3873__auto__ (java.io.OutputStreamWriter. outs__3872__auto__)] (clojure.core/doto (java.lang.Thread. (fn* [] (clojure.core/binding [clojure.core/*in* (clojure.core/-> ins__3871__auto__ java.io.InputStreamReader. clojure.lang.LineNumberingPushbackReader.) clojure.core/*out* out-writer__3873__auto__ clojure.core/*err* (java.io.PrintWriter. out-writer__3873__auto__) clojure.core/*warn-on-reflec
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/jr0cket/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+LD_LIBRARY_PATH=/usr/lib/jvm/java-6-openjdk/jre/lib/i386/server:/usr/lib/jvm/java-6-openjdk/jre/lib/i386:/usr/lib/jvm/java-6-openjdk/jre/../lib/i386:/usr/lib/jvm/java-6-openjdk/jre/lib/i386/client:/usr/lib/jvm/java-6-openjdk/jre/lib/i386:/usr/lib/jvm/java-6-openjdk/jre/../lib/i386
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x66a530], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x66a530], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x52e2c0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x52e2c0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x52e2c0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x52e2c0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x52e150], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x5311f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x5311f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x5311f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x5311f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Ubuntu 11.10 (oneiric)
+uname:Linux 3.0.0-14-generic #23-Ubuntu SMP Mon Nov 21 20:34:47 UTC 2011 i686
+libc:glibc 2.13 NPTL 2.13 
+rlimit: STACK 8192k, CORE 0k, NPROC 15936, NOFILE 4096, AS infinity
+load average:2.42 0.90 0.57
+
+/proc/meminfo:
+MemTotal:        2053848 kB
+MemFree:          117840 kB
+Buffers:          105092 kB
+Cached:           256128 kB
+SwapCached:          784 kB
+Active:          1187916 kB
+Inactive:         676112 kB
+Active(anon):    1044416 kB
+Inactive(anon):   521688 kB
+Active(file):     143500 kB
+Inactive(file):   154424 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:       1179272 kB
+HighFree:          15036 kB
+LowTotal:         874576 kB
+LowFree:          102804 kB
+SwapTotal:       2098172 kB
+SwapFree:        2094908 kB
+Dirty:              2252 kB
+Writeback:             0 kB
+AnonPages:       1502600 kB
+Mapped:           103664 kB
+Shmem:             63080 kB
+Slab:              27448 kB
+SReclaimable:      14936 kB
+SUnreclaim:        12512 kB
+KernelStack:        3120 kB
+PageTables:        20276 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     3125096 kB
+Committed_AS:    4976628 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       20844 kB
+VmallocChunk:      97520 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       4096 kB
+DirectMap4k:       24568 kB
+DirectMap4M:      884736 kB
+
+
+CPU:total 2 (1 cores per cpu, 2 threads per core) family 6 model 28 stepping 2, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, ht
+
+Memory: 4k page, physical 2053848k(117840k free), swap 2098172k(2094908k free)
+
+vm_info: OpenJDK Server VM (20.0-b11) for linux-x86 JRE (1.6.0_23-b23), built on Oct 22 2011 01:02:34 by "buildd" with gcc 4.6.1
+
+time: Fri Feb 10 22:31:06 2012
+elapsed time: 467 seconds
+

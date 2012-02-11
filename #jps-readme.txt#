@@ -1,0 +1,130 @@
+London Clojurians Hackday - February 2012
+
+The coldest night in London was the warm up to a symphony of music by a collection of unstopable Clojure hackers.  It was my first Clojure hackday, so was keen to learn lots of new things.
+
+Thanks to some great documentation [link] it was pretty easy to set up my LUbuntu laptop with an Overtone server and a nice lightweight clojure development environment (emacs, leiningen).
+
+I cant really explain how much fun working with Overture is.  Its like getting your hands on a zylaphone just after seeing Rolf Haris demo it on TV for the first time!  There is something just so ultimately geeky in creating music using functional programming.
+
+
+Setting up the audio for Overtone
+
+On Debian & Ubuntu systems this is as simple as installing a few packages.
+
+sudo apt-get install jack-tools ant openjdk-6-jdk fftw3 qjackctl
+
+
+As you grow your overtone project you may want to switch to a linux kernel set up for real time processing, but to start with this is not neccessary.  If you do make the switch, its probably a good idea to look at Ubuntu studio as that has lots of other music tools all set up for you. 
+
+
+
+Create a new overtone project
+
+https://github.com/overtone/overtone/wiki/Installing-overtone
+
+Create a new clojure project
+
+lein new tutorial
+
+
+Add the Overtone dependencies to the project configuration file
+
+(defproject tutorial "1.0"
+  :dependencies [[org.clojure/clojure "1.3.0"]
+                 [overtone "0.6.0"]])
+
+
+Download all the dependencies 
+
+lein deps
+
+
+... proceeds to download the internet... :-)
+
+
+
+Set up your environment
+
+change directory to the project top level and fire off emacs with the project file
+
+cd tutorial
+emacs project.clj &
+
+
+Fire up a repl inside emacs
+
+Using emacs 24, I use (clojure-jack-in) to start up and connect to a repl using the underlying lein project file.
+
+I have set up a keyboard shortcut of C-c,C-j to make this even easier.
+
+In the repl, I fired up the internal server (dont try to fire off both servers in the same repl, it crashed my repl)
+
+
+; SLIME 20100404
+user> (use 'overtone.live)
+
+          _____                 __
+         / __  /_  _____  _____/ /_____  ____  ___
+        / / / / | / / _ \/ ___/ __/ __ \/ __ \/ _ \
+       / /_/ /| |/ /  __/ /  / /_/ /_/ / / / /  __/
+       \____/ |___/\___/_/   \__/\____/_/ /_/\___/
+
+                          Programmable Music. v0.6
+
+
+Hello Jr0cket, may this be the start of a beautiful music hacking session...
+nil
+
+
+
+user> (definst annoying-tone [] (saw 220))
+#<instrument: annoying-tone>
+user> (annoying-tone)
+29
+user> (kill 29)
+:killed
+user> 
+
+
+
+
+
+Defining my first instrument
+
+https://github.com/overtone/overtone/wiki/Getting-Started
+
+(definst annoying-tone [] (saw 220))
+
+This is a simple and rather annoying tone that uses the saw function to create the sound.
+
+To play the sound I simply call its name:
+
+(annoying-tone)
+
+
+user> (definst annoying-tone [] (saw 220))
+#<instrument: annoying-tone>
+user> (annoying-tone)
+29
+user> (kill 29)
+:killed
+user> 
+
+
+And to stop it playing, I use one of the following:
+
+(kill pid) - kill the specific instrument by its number, returned after calling the instrument on the repl.
+(kill annoying-tone) ; kills all instances of the named instrument 
+(stop)   ; stops everything playing
+
+
+
+Doing something more musical
+
+
+
+
+
+
+Thanks to Phil Potter for having the energy to organise this event and Thoughtworks for supporting us with the venue and free WiFi.
+
