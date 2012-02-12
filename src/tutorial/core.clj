@@ -7,3 +7,9 @@
 ; Define a very boring instrument
 (definst annoying-tone [] (saw 220))
 
+(definst baz [freq 440] (* 0.3 (saw freq)))
+
+(baz 220)
+(baz 660)
+
+(stop)
